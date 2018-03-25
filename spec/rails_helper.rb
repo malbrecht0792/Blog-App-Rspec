@@ -30,8 +30,8 @@ RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
-  config.include FactoryGirl::Syntax::Methods
-  FactoryGirl.definition_file_paths = [File.expand_path('../factories', __FILE__)]
+  config.include FactoryBot::Syntax::Methods
+  FactoryBot.definition_file_paths = [File.expand_path('../factories', __FILE__)]
 
   config.infer_spec_type_from_file_location!
 
