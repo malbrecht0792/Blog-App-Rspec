@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :post do
+    association :user
     title "My Post"
     article "This is my first post!"
 

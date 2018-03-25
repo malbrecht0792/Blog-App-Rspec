@@ -2,13 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   describe('Validations') do
-    let(:user) {User.new(username: 'johndoe', email: 'johndoe@example.com')}
-    subject {
-      described_class.new(title: 'My Post', article: 'My first post', user: user)
-    }
-
     it 'saves a post with valid input' do
-      expect(subject).to be_valid
+      expect(build(:post)).to be_valid
     end
 
     it 'does not save a post without a title' do
