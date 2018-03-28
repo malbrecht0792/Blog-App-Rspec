@@ -11,5 +11,15 @@ FactoryBot.define do
     factory :invalid_article do
       article nil
     end
+
+    factory :invalid_post do
+      title nil
+      article nil
+    end
+
+    factory :new_attributes do
+      title "My New Post"
+      article "This is my new post!"
+    end
   end
 end
