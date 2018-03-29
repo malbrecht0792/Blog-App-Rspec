@@ -17,9 +17,10 @@ FactoryBot.define do
       article nil
     end
 
-    factory :new_attributes do
-      title "My New Post"
-      article "This is my new post!"
-    end
+    
+  end
+  factory :new_attributes, class: Post do
+    title "My New Post"
+    article "This is my new post!"
   end
 end

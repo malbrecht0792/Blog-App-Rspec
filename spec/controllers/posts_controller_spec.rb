@@ -44,9 +44,9 @@ RSpec.describe PostsController, type: :controller do
   end
 
   describe "GET #create" do
-    xit "returns http success" do
+    it "returns http success" do
       get :create, params: {post: valid_attributes}
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(:redirect)
     end
 
     context 'with valid attributes' do
@@ -89,9 +89,9 @@ RSpec.describe PostsController, type: :controller do
   end
 
   describe "GET #update" do
-    xit "returns http success" do
-      get :update, params: {id: valid_post.to_param}
-      expect(response).to have_http_status(:success)
+    it "returns http success" do
+      get :update, params: {id: valid_post.to_param, post: new_attributes}
+      expect(response).to have_http_status(:redirect)
     end
 
     context 'with valid attributes' do
@@ -127,9 +127,9 @@ RSpec.describe PostsController, type: :controller do
   describe "GET #destroy" do
     let(:post) { build(:post) }
 
-    xit "returns http success" do
+    it "returns http success" do
       get :destroy, params: {id: valid_post.to_param}
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(:redirect)
     end
 
     it 'destroys the requested post' do
