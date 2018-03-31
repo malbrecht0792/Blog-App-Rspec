@@ -1,9 +1,11 @@
 <h1>Posts#new</h1>
 
-<% form_for(@Post) do |f| %>
+<%= form_for(@post) do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %>
     <%= f.label :article %>
     <%= f.text_field :article %>
+    <%= f.label :username %>
+    <%= f.collection_select(:user_id, User.all, :id, :username, {id: :user_id}) %>
     <%= f.submit 'Create Post' %>
 <% end %>
