@@ -1,11 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
-  let(:user) {create(:user)}
+  let(:user) { create(:user) }
   let(:valid_post) { create(:post) }
-  let(:valid_attributes) {attributes_for(:post, user_id: user.id)}
-  let(:invalid_attributes) {attributes_for(:invalid_post)}
-  let(:new_attributes) {attributes_for(:new_attributes)}
+  let(:valid_attributes) { attributes_for(:post, user_id: user.id) }
+  let(:invalid_attributes) { attributes_for(:invalid_post) }
+  let(:new_attributes) { attributes_for(:new_attributes) }
+
+  before { sign_in(user) }
 
   describe "GET #index" do
     it "returns http success" do
@@ -143,6 +145,15 @@ RSpec.describe PostsController, type: :controller do
       post.save
       delete :destroy, params: {id: post}
       expect(response).to redirect_to(posts_url)
+    end
+  end
+
+  describe 'unauthenticated' do
+    it 'redirects user to the sign in page when not signed in' do
+      # sign out user because the before hook defaults the user to be signed in
+      sign_out(user)
+      get :index
+      expect(response).to redirect_to(new_user_session_path)
     end
   end
 end
