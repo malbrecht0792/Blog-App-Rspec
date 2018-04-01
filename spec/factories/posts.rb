@@ -17,7 +17,15 @@ FactoryBot.define do
       article nil
     end
 
-    
+    factory :fitness_post do
+      title "Consistenly Exercising"
+      article "13 keys to staying consistent at the gym..."
+    end
+
+    factory :health_post do
+      title "Eating Right"
+      article "11 ways to easily cut carbs..."
+    end
   end
   factory :new_attributes, class: Post do
     title "My New Post"

@@ -10,11 +10,11 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = current_user.posts.build
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post }
@@ -48,7 +48,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:article, :title, :user_id)
+    params.require(:post).permit(:article, :title)
   end
 
   def set_post
